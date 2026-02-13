@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard de Projetos</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    header, main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 16px;
+    }
+    header h1 { margin: 0 0 8px; }
+    .toolbar {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .search {
+      flex: 1;
+      min-width: 240px;
+    }
+    input[type="search"] {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #334155;
+      background: #0b1220;
+      color: var(--text);
+    }
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .chip {
+      padding: 8px 12px;
+      border-radius: 20px;
+      border: 1px solid #334155;
+      background: #0b1220;
+      color: var(--muted);
+      cursor: pointer;
+      user-select: none;
+    }
+    .chip[aria-pressed="true"] {
+      background: var(--accent);
+      color: #0b1220;
+      border-color: var(--accent);
+    }
+    .chip:focus-visible, .btn:focus-visible, input[type="search"]:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .grid {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform .15s ease-in-out, box-shadow .15s;
+    }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+    .card h3 { margin: 0; font-size: 1.1rem; }
+    .card p { margin: 0; color: var(--muted); }
+    .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tag { font-size: .75rem; padding: 4px 8px; border-radius: 12px; background: #0b1220; color: var(--muted); border: 1px solid #334155; }
+    .actions { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+    .btn {
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid #334155;
+      background: #0b1220;
+      color: var(--text);
+    }
+    .btn.primary { background: var(--accent); color: #0b1220; border-color: var(--accent); }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;
+    }
+    /* Highlight de código estilo VS Code (aproximação) */
+    .tok-key { color: #569cd6; }
+    .tok-str { color: #ce9178; }
+    .tok-num { color: #b5cea8; }
+    .tok-com { color: #6a9955; }
+    .tok-func { color: #dcdcaa; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Dashboard de Projetos</h1>
+    <p id="intro">Navegue pelos mini‑projetos frontend e backend.</p>
+    <div class="toolbar" role="region" aria-labelledby="intro">
+      <label class="search">
+        <span class="sr-only">Buscar projetos</span>
+        <input id="search" type="search" placeholder="Buscar por nome, descrição ou tecnologia" aria-label="Buscar projetos">
+      </label>
+      <div class="filters" role="group" aria-label="Categorias">
+        <button class="chip" data-filter="all" aria-pressed="true">Todos</button>
+        <button class="chip" data-filter="frontend" aria-pressed="false">Frontend</button>
+        <button class="chip" data-filter="backend" aria-pressed="false">Backend</button>
+        <button class="chip" data-filter="jogos" aria-pressed="false">Jogos</button>
+        <button class="chip" data-filter="calculadoras" aria-pressed="false">Calculadoras</button>
+        <button class="chip" data-filter="utilitarios" aria-pressed="false">Utilitários</button>
+        <button class="chip" data-filter="exercicios" aria-pressed="false">Exercícios</button>
+      </div>
+      <button id="goto-terminal-btn" class="btn" type="button" aria-label="Ir para a seção do terminal">Ir para Terminal</button>
+    </div>
+  </header>
+  <main>
+    <section class="grid" id="cards" aria-live="polite"></section>
+    <section id="terminal-section" style="margin-top:24px">
+      <h2 style="margin:0 0 8px">Terminal do Navegador</h2>
+      <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center">
+        <select id="script-select" aria-label="Escolher script" style="flex:1; min-width:260px; padding:8px; border-radius:8px; border:1px solid #334155; background:#0b1220; color:var(--text)"></select>
+        <button id="run-btn" class="btn primary" type="button">Executar</button>
+        <button id="clear-btn" class="btn" type="button">Limpar</button>
+      </div>
+      <details style="margin-top:8px">
+        <summary style="cursor:pointer">Editar código (temporário, não salva no arquivo)</summary>
+        <div style="margin-top:8px; display:flex; gap:8px; flex-direction:column">
+          <textarea id="editor" aria-label="Editor de código temporário" style="width:100%; min-height:180px; padding:10px; border-radius:8px; border:1px solid #334155; background:#0b1220; color:var(--text); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;"></textarea>
+          <div style="display:flex; gap:8px; flex-wrap:wrap">
+            <button id="reload-btn" class="btn" type="button">Recarregar do arquivo</button>
+            <span style="color:#94a3b8; align-self:center">As edições aqui NÃO são salvas no disco; valem só para a próxima execução.</span>
+          </div>
+        </div>
+      </details>
+      <div id="terminal" style="margin-top:12px; background:#0b1220; border:1px solid #334155; border-radius:8px; padding:12px; min-height:200px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; white-space: pre-wrap;"></div>
+    </section>
+  </main>
+
+  <script type="module">
+    async function loadProjects() {
+      const res = await fetch('./data/projects.json');
+      if (!res.ok) {
+        throw new Error('Não foi possível carregar data/projects.json');
+      }
+      return res.json();
+    }
+
+    const cardsEl = document.getElementById('cards');
+
+    function render(list) {
+      cardsEl.innerHTML = '';
+      for (const p of list) {
+        const card = document.createElement('article');
+        card.className = 'card';
+        card.dataset.category = p.category;
+        if (p.icon) {
+          const icon = document.createElement('div');
+          icon.setAttribute('aria-hidden', 'true');
+          icon.style.fontSize = '28px';
+          icon.textContent = p.icon;
+          card.appendChild(icon);
+        }
+        const h = document.createElement('h3');
+        h.textContent = p.name;
+        const d = document.createElement('p');
+        d.textContent = p.desc;
+        const tags = document.createElement('div');
+        tags.className = 'tags';
+        (p.tech || []).forEach(t => {
+          const tag = document.createElement('span');
+          tag.className = 'tag';
+          tag.textContent = t;
+          tags.appendChild(tag);
+        });
+        const actions = document.createElement('div');
+        actions.className = 'actions';
+        const demo = document.createElement('a');
+        demo.href = p.demo;
+        demo.className = 'btn primary';
+        demo.target = '_blank';
+        demo.rel = 'noopener noreferrer';
+        demo.textContent = 'Demo';
+        const repo = document.createElement('a');
+        repo.href = p.repo;
+        repo.className = 'btn';
+        repo.textContent = 'Abrir pasta';
+        actions.append(demo, repo);
+        card.append(h, d, tags, actions);
+        cardsEl.appendChild(card);
+      }
+    }
+
+    function filterProjects(all, term, category) {
+      const t = term.trim().toLowerCase();
+      return all.filter(p => {
+        const matchesTerm =
+          !t ||
+          p.name.toLowerCase().includes(t) ||
+          p.desc.toLowerCase().includes(t) ||
+          (p.tech || []).some(x => x.toLowerCase().includes(t));
+        const matchesCategory = category === 'all' || p.category === category;
+        return matchesTerm && matchesCategory;
+      });
+    }
+
+    let currentCategory = 'all';
+    let ALL = [];
+    try {
+      ALL = await loadProjects();
+      render(ALL);
+    } catch (e) {
+      const msg = document.createElement('p');
+      msg.textContent = 'Erro ao carregar lista de projetos.';
+      cardsEl.appendChild(msg);
+    }
+
+    document.getElementById('search').addEventListener('input', (e) => {
+      render(filterProjects(ALL, e.target.value, currentCategory));
+    });
+
+    document.querySelectorAll('.chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.chip').forEach(b => b.setAttribute('aria-pressed', 'false'));
+        btn.setAttribute('aria-pressed', 'true');
+        currentCategory = btn.dataset.filter;
+        const term = document.getElementById('search').value;
+        render(filterProjects(ALL, term, currentCategory));
+      });
+    });
+
+    const selectEl = document.getElementById('script-select');
+    const terminalEl = document.getElementById('terminal');
+    const runBtn = document.getElementById('run-btn');
+    const clearBtn = document.getElementById('clear-btn');
+    const gotoBtn = document.getElementById('goto-terminal-btn');
+    const editorEl = document.getElementById('editor');
+    const reloadBtn = document.getElementById('reload-btn');
+
+    function println(text, cls) {
+      const line = document.createElement('div');
+      if (cls) line.style.color = cls === 'error' ? '#fca5a5' : '#e2e8f0';
+      line.textContent = text;
+      terminalEl.appendChild(line);
+      terminalEl.scrollTop = terminalEl.scrollHeight;
+    }
+
+    function renderCodeBlock(code) {
+      const label = document.createElement('div');
+      label.textContent = 'Código executado:';
+      label.style.margin = '4px 0';
+      terminalEl.appendChild(label);
+      const pre = document.createElement('pre');
+      pre.style.background = '#0b1220';
+      pre.style.border = '1px solid #334155';
+      pre.style.borderRadius = '8px';
+      pre.style.padding = '8px';
+      pre.style.whiteSpace = 'pre-wrap';
+      pre.innerHTML = highlightJS(code);
+      terminalEl.appendChild(pre);
+      const out = document.createElement('div');
+      out.textContent = 'Saída do terminal:';
+      out.style.margin = '8px 0 0';
+      terminalEl.appendChild(out);
+    }
+
+    function highlightJS(src) {
+      const escapeHtml = (s) => s
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+      let code = escapeHtml(src);
+      const stash = [];
+      const stashPush = (text, cls) => {
+        const id = `@@T${stash.length}@@`;
+        stash.push({ id, html: `<span class="${cls}">${text}</span>` });
+        return id;
+      };
+      // Comentários (/* */ e //)
+      code = code.replace(/\/\*[\s\S]*?\*\//g, (m) => stashPush(m, 'tok-com'));
+      code = code.replace(/\/\/[^\n\r]*/g, (m) => stashPush(m, 'tok-com'));
+      // Strings (", ', `)
+      code = code.replace(/"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|`(?:\\.|[^`\\])*`/g, (m) => stashPush(m, 'tok-str'));
+      // Números
+      code = code.replace(/\b(?:(?:0x[\da-fA-F]+)|(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?)\b/g, (m) => `<span class="tok-num">${m}</span>`);
+      // Palavras-chave e literais
+      const kw = '\\b(?:break|case|catch|class|const|continue|debugger|default|delete|do|else|export|extends|finally|for|function|if|import|in|instanceof|let|new|return|super|switch|this|throw|try|typeof|var|void|while|with|yield|async|await|true|false|null|undefined)\\b';
+      code = code.replace(new RegExp(kw, 'g'), (m) => `<span class="tok-key">${m}</span>`);
+      // Nomes de função (heurística: palavra antes de '(' )
+      code = code.replace(/\b([A-Za-z_$][\w$]*)\s*(?=\()/g, (m) => `<span class="tok-func">${m}</span>`);
+      // Restaurar tokens protegidos (strings/comentários)
+      for (const t of stash) {
+        code = code.replace(t.id, t.html);
+      }
+      return code;
+    }
+
+    async function loadTerminalScripts() {
+      const res = await fetch('./data/terminal-scripts.json');
+      if (!res.ok) return [];
+      return res.json();
+    }
+
+    async function loadScriptContent(path) {
+      try {
+        const res = await fetch(path);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const code = await res.text();
+        editorEl.value = code;
+      } catch (e) {
+        editorEl.value = `// Erro ao carregar o arquivo (${e.message}).`;
+      }
+    }
+
+    const worker = new Worker('./scripts/runner.worker.js', { type: 'module' });
+    worker.onmessage = (e) => {
+      const { type, data } = e.data || {};
+      if (type === 'log') println(data);
+      else if (type === 'error') println(data, 'error');
+      else if (type === 'done') println('> [execução finalizada]');
+    };
+
+    const SCRIPTS = await loadTerminalScripts();
+    selectEl.innerHTML = '';
+    SCRIPTS.forEach((s, i) => {
+      const opt = document.createElement('option');
+      opt.value = s.path;
+      opt.textContent = s.name;
+      opt.title = s.desc || '';
+      if (i === 0) opt.selected = true;
+      selectEl.appendChild(opt);
+    });
+    if (selectEl.value) {
+      await loadScriptContent(selectEl.value);
+    }
+    selectEl.addEventListener('change', async () => {
+      if (selectEl.value) await loadScriptContent(selectEl.value);
+    });
+    reloadBtn.addEventListener('click', async () => {
+      if (selectEl.value) await loadScriptContent(selectEl.value);
+    });
+
+    runBtn.addEventListener('click', async () => {
+      const path = selectEl.value;
+      if (!path) return;
+      terminalEl.innerHTML = '';
+      println(`> Executando: ${path}`);
+      try {
+        const code = editorEl.value ?? '';
+        renderCodeBlock(code);
+        worker.postMessage({ type: 'run', code });
+      } catch (e) {
+        println(String(e), 'error');
+      }
+    });
+    clearBtn.addEventListener('click', () => {
+      terminalEl.innerHTML = '';
+    });
+    gotoBtn.addEventListener('click', () => {
+      document.getElementById('terminal-section')?.scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
+

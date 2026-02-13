@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinicius Moraes</title>
+    <link rel="icon" href="vini.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+       
+        .instagram-link {
+            text-decoration: none; 
+            color: #1a73e8; 
+        }
+
+        .instagram-link:hover {
+            text-decoration: underline; 
+            color: #0a66c2; 
+        }
+
+        .instagram-link:visited {
+            color: #1a73e8; 
+        }
+
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1>Vinicius Moraes</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="https://www.youtube.com/shorts/7sxokVlPmJ8">Meus Hobbies</a></li>
+            <li><a href="https://api.whatsapp.com/send/?phone=5519982457962&text&type=phone_number&app_absent=0">Contato</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Sobre Mim</h2>
+            <p>Olá, meu nome é Vinicius Moraes.</p>
+            <p>Tenho 21 anos e estou no 4º semestre de Análise e Desenvolvimento de Sistemas.</p>
+            <p>Você pode me encontrar no Instagram: 
+                <a href="https://www.instagram.com/vini.mooraes/?hl=pt-br" class="instagram-link">vini.mooraes</a>
+            </p>
+        </section>
+    </main>
+
+    <div class="buttons">
+        <button onclick="mudarCor('red')" style="background-color: red; color: white;">R</button>
+        <button onclick="mudarCor('#00FF00')" style="background-color: #00FF00; color: white;">G</button>
+        <button onclick="mudarCor('blue')" style="background-color: blue; color: white;">B</button>
+        <button onclick="resetarCor()" style="background-color: white; color: black;">Reset</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Vinicius Moraes</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

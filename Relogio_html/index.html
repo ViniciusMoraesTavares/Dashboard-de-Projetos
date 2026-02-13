@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relógio BR</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        #clock-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .clock {
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            width: 200px;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform .15s ease-in-out;
+        }
+        .clock:focus-within, .clock:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <h1>Fusos horários do Brasil</h1>
+
+    <div id="clock-container" role="list" aria-label="Relógios por fuso"></div>
+
+    <script type="module">
+        import { createClock } from './js/time-utils.js';
+        const clockContainer = document.getElementById('clock-container');
+        clockContainer.appendChild(createClock('America/Rio_Branco', 'Rio Branco'));
+        clockContainer.appendChild(createClock('America/Manaus', 'Manaus'));
+        clockContainer.appendChild(createClock('America/Sao_Paulo', 'Brasília'));
+        clockContainer.appendChild(createClock('America/Noronha', 'Fernando de Noronha'));
+    </script>
+</body>
+</html>

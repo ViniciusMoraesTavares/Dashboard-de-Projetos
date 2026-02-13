@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo da Forca</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    #informacoes {
+      margin-top: 20px;
+    }
+
+    #palavraEscondida {
+      margin-top: 20px;
+      font-size: 24px;
+    }
+
+    #chancesRestantes {
+      margin-top: 10px;
+      font-size: 18px;
+      color: red;
+    }
+
+    #entradaUsuario {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Jogo da Forca</h1>
+
+  <div id="informacoes">
+    <p id="tema">Tema: </p>
+    <p id="dificuldade">Dificuldade: </p>
+    <p id="quantidadeLetras">Quantidade de Letras: </p>
+  </div>
+
+  <div id="pontuacao">Pontuação: 0</div>
+
+  <div id="palavraEscondida">Palavra: </div>
+
+  <div id="entradaUsuario">
+    <label for="escolhaUsuario"></label>
+    <input type="text" id="escolhaUsuario" />
+    <button onclick="verificarEscolha()">Enviar</button>
+  </div>
+
+  <div id="chancesRestantes">Chances: 8</div>
+  <div id="letrasErradas"></div>
+
+  <button onclick="reiniciarJogo()">Reiniciar Jogo</button>
+  <button onclick="zerarPontuacao()">Zerar Pontuação</button>
+
+  <script src="forca.js"></script>
+</body>
+
+</html>

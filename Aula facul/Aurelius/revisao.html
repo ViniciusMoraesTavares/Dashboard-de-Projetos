@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprovação de Política</title>
+    <link rel="stylesheet" href="styles2.css">
+    <script>
+        function showApprovalMessage() {
+            alert('Política aprovada com sucesso. Agora a política vai para implementação.');
+        }
+
+        function togglePolicyDetails(policyId) {
+            var policyDetails = document.getElementById('policy-details-' + policyId); // ID do detalhe da política
+            if (policyDetails.style.display === 'block') {
+                policyDetails.style.display = 'none'; 
+            } else {
+                policyDetails.style.display = 'block'; 
+            }
+        }
+
+        function downloadPDF() {
+            
+            var pdfURL = "Documestos Politica de produtos.pdf";
+            window.open(pdfURL, '_blank');
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="approval-container">
+            <h2>Aprovação de Política</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Título da Política</th>
+                        <th>Data da Submissão</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td onclick="togglePolicyDetails(1)">1- Política de Preços</td>
+                        <td>09/06/2024</td>
+                        <td>Aprovada - Liderança (Vinicius Moraes)</td>
+                    </tr>
+                    <tr>
+                        <td onclick="togglePolicyDetails(2)">2- Política de produtos</td>
+                        <td>09/06/2024</td>
+                        <td>Pendente</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button>Ver Mais</button>
+            <div class="policy-details" id="policy-details-1" style="display: none;">
+                <h3>1- Política de Preços</h3>
+                <p>Funcionário: João Mario Silva</p>
+                <label for="description">Descrição da Política:</label>
+                <p id="description">Esta política estabelece diretrizes para a definição e ajuste de preços de nossos produtos, visando garantir competitividade no mercado e maximização de lucros.</p>
+                
+                <label for="comments">Comentários:</label>
+                <textarea id="comments"></textarea>
+                
+                <button onclick="downloadPDF()">Ver Documentos</button>
+                <button>Solicitar Alterações</button>
+                <button onclick="showApprovalMessage()">Aprovar</button>
+            </div>
+            <div class="policy-details" id="policy-details-2" style="display: none;">
+                <h3>2- Política de Preços</h3>
+                <p>Funcionário: Maria Souza</p>
+                <label for="description">Descrição da Política:</label>
+                <p id="description">Esta política estabelece diretrizes para a definição e ajuste de preços de nossos produtos, visando garantir competitividade no mercado e maximização de lucros.</p>
+                
+                <label for="comments">Comentários:</label>
+                <textarea id="comments"></textarea>
+                
+                <button onclick="downloadPDF()">Ver Documentos</button>
+                <button>Solicitar Alterações</button>
+                <button onclick="showApprovalMessage()">Aprovar</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

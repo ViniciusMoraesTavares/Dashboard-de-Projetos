@@ -1,0 +1,83 @@
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    background-image: url('Plano-de-fundo-de-programacao-em-ultra-HD-1024x576.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-color 0.5s ease, background-image 0.5s ease;
+    color: white;
+}
+
+header, nav, main, footer{
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    max-width: 800px;
+    width: 90%;
+    margin: 10px auto;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+header, footer{
+    width: 100%;
+    max-width: none;
+    border-radius: 0;
+}
+
+nav ul{
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover{
+    color: #1900ff;
+}
+
+.buttons{
+    margin: 20px auto;
+    text-align: center;
+}
+
+button{
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: transform 0.3s;
+}
+
+button:hover{
+    transform: scale(1.1);
+}
+
+footer{
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+header:hover, nav:hover, main:hover, footer:hover{
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
+    background-color: rgba(0, 0, 0, 1);
+}

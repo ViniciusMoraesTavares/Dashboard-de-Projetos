@@ -1,0 +1,9 @@
+{
+  "name": "codigos_vini-monorepo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:links": "node ./scripts/validate-links.mjs",
+    "test:links:skip-http": "node ./scripts/validate-links.mjs --skip-http"
+  }
+}

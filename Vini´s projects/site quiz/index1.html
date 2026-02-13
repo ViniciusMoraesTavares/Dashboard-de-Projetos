@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="styles1.css" rel="stylesheet">
+    <title>Quiz Aavançado!</title>
+    <script src="script1.js"></script>
+</head>
+<body>
+
+    <div class="jumbotron">
+        <p><h2>Quiz Avançado 2023!!</h2></p>
+        <p><h2>100% Atualizado</p></h2>
+    </div>
+
+    <div class="container">
+
+        <div class="section">
+            <p><h2>Parte 1</h2></p> 
+            <p><h3>Multipla Escolha</h3></p>
+            <hr>
+
+            <h3>O vini é...</h3>
+            <button onclick="checkMultipleChoiceAnswer('Lindo')">Lindo</button>
+            <button onclick="checkMultipleChoiceAnswer('Gostoso')">Gostoso</button>
+            <button onclick="checkMultipleChoiceAnswer('Forte')">Forte</button>
+
+            <div id="multiple-choice-feedback"></div>
+        </div>
+
+        <div class="section">
+            <p><h2>Parte 2</h2></p> 
+            <p><h3>Resposta Livre</h3></p>
+            <hr>
+
+            <h3>Onde vc ta indo</h3>
+            <input type="text" id="free-response-answer">
+            <button onclick="checkFreeResponseAnswer()">Enviar</button>
+
+            <div id="free-response-feedback"></div>
+        </div>
+
+    </div>
+
+</body>
+</html>

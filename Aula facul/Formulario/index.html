@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Registro</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="text-center">Formulário de Registro</h2>
+    <form>
+        <div class="form-group wave-group">
+            <input type="text" class="input" id="nomeCompleto" required>
+            <span class="bar"></span>
+            <label class="label">
+                <span class="label-char" style="--index: 0">N</span>
+                <span class="label-char" style="--index: 1">o</span>
+                <span class="label-char" style="--index: 2">m</span>
+                <span class="label-char" style="--index: 3">e</span>
+                <span class="label-char" style="--index: 4">-</span>
+                <span class="label-char" style="--index: 5">C</span>
+                <span class="label-char" style="--index: 6">o</span>
+                <span class="label-char" style="--index: 7">m</span>
+                <span class="label-char" style="--index: 8">p</span>
+                <span class="label-char" style="--index: 9">l</span>
+                <span class="label-char" style="--index: 10">e</span>
+                <span class="label-char" style="--index: 11">t</span>
+                <span class="label-char" style="--index: 12">o</span>
+            </label>
+        </div>
+
+        <div class="form-group wave-group">
+            <input type="email" class="input" id="email" required>
+            <span class="bar"></span>
+            <label class="label">
+                <span class="label-char" style="--index: 0">E</span>
+                <span class="label-char" style="--index: 1">-</span>
+                <span class="label-char" style="--index: 2">m</span>
+                <span class="label-char" style="--index: 3">a</span>
+                <span class="label-char" style="--index: 4">i</span>
+                <span class="label-char" style="--index: 5">l</span>
+            </label>
+        </div>
+
+        <div class="form-group wave-group">
+            <input type="password" class="input" id="senha" required>
+            <span class="bar"></span>
+            <label class="label">
+                <span class="label-char" style="--index: 0">S</span>
+                <span class="label-char" style="--index: 1">e</span>
+                <span class="label-char" style="--index: 2">n</span>
+                <span class="label-char" style="--index: 3">h</span>
+                <span class="label-char" style="--index: 4">a</span>
+            </label>
+        </div>
+
+        <div class="form-group wave-group">
+            <input type="password" class="input" id="confirmaSenha" required>
+            <span class="bar"></span>
+            <label class="label">
+                <span class="label-char" style="--index: 0">C</span>
+                <span class="label-char" style="--index: 1">o</span>
+                <span class="label-char" style="--index: 2">n</span>
+                <span class="label-char" style="--index: 3">f</span>
+                <span class="label-char" style="--index: 4">i</span>
+                <span class="label-char" style="--index: 5">r</span>
+                <span class="label-char" style="--index: 6">m</span>
+                <span class="label-char" style="--index: 7">e</span>
+                <span class="label-char" style="--index: 8">-</span>
+                <span class="label-char" style="--index: 9">a</span>
+                <span class="label-char" style="--index: 10">-</span>
+                <span class="label-char" style="--index: 11">S</span>
+                <span class="label-char" style="--index: 12">e</span>
+                <span class="label-char" style="--index: 13">n</span>
+                <span class="label-char" style="--index: 14">h</span>
+                <span class="label-char" style="--index: 15">a</span>
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label>Gênero</label><br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="genero" id="masculino" value="Masculino" required>
+                <label class="form-check-label" for="masculino">Masculino</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="genero" id="feminino" value="Feminino">
+                <label class="form-check-label" for="feminino">Feminino</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="genero" id="outro" value="Outro">
+                <label class="form-check-label" for="outro">Outro</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="dataNascimento">Data de Nascimento</label>
+            <input type="date" class="form-control" id="dataNascimento" required>
+        </div>
+
+        <div class="form-group">
+            <label for="pais">País</label>
+            <select class="custom-select" id="pais" required>
+                <option value="">Selecione seu país</option>
+                <option value="brasil">Brasil</option>
+                <option value="portugal">Portugal</option>
+                <option value="estadosUnidos">Estados Unidos</option>
+                <option value="frança">França</option>
+                <option value="argentina">Argentina</option>
+                <option value="uruguai">Uruguai</option>
+                <option value="canada">Canadá</option>
+            </select>
+        </div>
+
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="aceitarTermos" required>
+            <label class="form-check-label" for="aceitarTermos">Aceito os termos de uso</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

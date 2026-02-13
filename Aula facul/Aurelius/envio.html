@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envio de Política</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function showSuccessMessage() {
+            const now = new Date();
+            const formattedDate = now.toLocaleDateString();
+            const formattedTime = now.toLocaleTimeString();
+            alert(`Política enviada com sucesso em ${formattedDate} às ${formattedTime}`);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="login-container">
+            <div class="login-card">
+                <h2>Envio de Política</h2>
+                <form onsubmit="showSuccessMessage(); return false;">
+                    <label for="title">Título da Política:</label>
+                    <input type="text" id="title" name="title">
+                    
+                    <label for="category">Categoria da Política:</label>
+                    <select id="category" name="category">
+                        <option value="produto">Selecione uma Categoria</option>
+                        <option value="produto">1- Produto</option>
+                        <option value="precos">2- Preços</option>
+                        <option value="qualidade">3- Qualidade</option>
+                        <option value="marketing">4- Marketing</option>
+                        <option value="vendas">5- Vendas</option>
+                        <option value="atendimento">6- Atendimento ao Cliente</option>
+                        <option value="suporte">7- Suporte Técnico</option>
+                        <option value="distribuicao">8- Distribuição</option>
+                        <option value="logistica">9- Logística</option>
+                        <option value="compras">10- Compras</option>
+                        <option value="recursos_humanos">11- Recursos Humanos</option>
+                        <option value="financas">12- Finanças</option>
+                        <option value="ti">13- Tecnologia da Informação</option>
+                        <option value="seg_info">14- Segurança da Informação</option>
+                        <option value="compliance">15- Compliance</option>
+                        <option value="sustentabilidade">16- Sustentabilidade</option>
+                        <option value="resp_social">17- Responsabilidade Social</option>
+                        <option value="pesquisa">18- Pesquisa e Desenvolvimento</option>
+                        <option value="inovacao">19- Inovação</option>
+                        <option value="gestao_riscos">20- Gestão de Riscos</option>
+                        <option value="treinamento">21- Treinamento e Desenvolvimento</option>
+                        <option value="gestao_projetos">22- Gestão de Projetos</option>
+                        <option value="comunicacao">23- Comunicação Corporativa</option>
+                        <option value="saude_seg">24- Saúde e Segurança no Trabalho</option>
+                        <option value="juridico">25- Jurídico</option>
+                        <option value="parcerias">26- Parcerias e Alianças</option>
+                        <option value="governanca">27- Governança Corporativa</option>
+                        <option value="exp_cliente">28- Experiência do Cliente</option>
+                        <option value="gestao_dados">29- Gestão de Dados</option>
+                        <option value="privacidade">30- Privacidade e Proteção de Dados</option>
+                        
+                    </select>
+                    
+                    <label for="description">Descrição:</label>
+                    <textarea id="description" name="description"></textarea>
+                    
+                    <label for="document">Anexar Documentos:</label>
+                    <input type="file" id="document" name="document">
+                    
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

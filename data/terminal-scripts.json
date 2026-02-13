@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Operadores Aritméticos (conta.js)",
+    "path": "./Vini´s%20projects/conta.js",
+    "desc": "Demonstra soma/subtração/multiplicação/divisão via console."
+  },
+  {
+    "name": "Maior Valor em Vetor (numeros.js)",
+    "path": "./numeros.js",
+    "desc": "Percorre vetor e imprime o maior valor."
+  },
+  {
+    "name": "for_of e resto (for_of.js)",
+    "path": "./Vini´s%20projects/Js%20Estudos/for_of.js",
+    "desc": "Iteração de string e operador %."
+  },
+  {
+    "name": "Hoisting (hoisting.js)",
+    "path": "./Vini´s%20projects/Js%20Estudos/hoisting.js",
+    "desc": "Exemplos de elevação de variáveis e funções."
+  },
+  {
+    "name": "Parâmetros (paramentros.js)",
+    "path": "./Vini´s%20projects/Js%20Estudos/paramentros.js",
+    "desc": "Parâmetro default e rest."
+  },
+  {
+    "name": "var vs let (teste_var.js)",
+    "path": "./Vini´s%20projects/Js%20Estudos/teste_var.js",
+    "desc": "Escopo, redeclaração e template string."
+  },
+  {
+    "name": "typeof (variavel.js)",
+    "path": "./Vini´s%20projects/Js%20Estudos/variavel.js",
+    "desc": "Tipos indefinidos."
+  },
+  {
+    "name": "Gerador Aleatório (aleatoridade.js)",
+    "path": "./Vini´s%20projects/testes/aleatoridade.js",
+    "desc": "Gera string embaralhada com letras, números e símbolo."
+  },
+  {
+    "name": "Simulador de Dado (dado.js)",
+    "path": "./Vini´s%20projects/testes/dado.js",
+    "desc": "Sorteia um valor e desenha pontos no console."
+  },
+  {
+    "name": "Laço For (for_teste.js)",
+    "path": "./Vini´s%20projects/testes/for_teste.js",
+    "desc": "Demonstra contagem e impressão."
+  }
+]

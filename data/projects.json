@@ -1,0 +1,191 @@
+[
+  {
+    "name": "Lista HTML",
+    "desc": "Servidor Express com EJS e estáticos.",
+    "tech": ["Node", "Express", "EJS", "CORS"],
+    "category": "backend",
+    "demo": "http://localhost:3000/",
+    "repo": "./Lista%20HTML",
+    "icon": "🖥️"
+  },
+  {
+    "name": "nestjs-api",
+    "desc": "API em NestJS/TypeScript.",
+    "tech": ["Node", "NestJS", "TypeScript"],
+    "category": "backend",
+    "demo": "http://localhost:3001/",
+    "repo": "./nestjs-api",
+    "icon": "🧩"
+  },
+  {
+    "name": "Relogio_html",
+    "desc": "Relógios por fuso horário.",
+    "tech": ["HTML", "CSS", "JS"],
+    "category": "frontend",
+    "demo": "./Relogio_html/index.html",
+    "repo": "./Relogio_html",
+    "icon": "⏰"
+  },
+  {
+    "name": "slide_html",
+    "desc": "Slides estáticos em HTML.",
+    "tech": ["HTML", "CSS", "JS"],
+    "category": "frontend",
+    "demo": "./slide_html/index.html",
+    "repo": "./slide_html",
+    "icon": "🖼️"
+  },
+  {
+    "name": "Página pessoal",
+    "desc": "Mini landing page.",
+    "tech": ["HTML", "CSS", "JS"],
+    "category": "frontend",
+    "demo": "./Vini´s%20projects/Pagina%20pessoal/index.html",
+    "repo": "./Vini´s%20projects/Pagina%20pessoal",
+    "icon": "🙋"
+  },
+  {
+    "name": "Forca",
+    "desc": "Jogo da Forca com pontuação.",
+    "tech": ["HTML", "CSS", "JS"],
+    "category": "jogos",
+    "demo": "./Vini´s%20projects/forca/index-forca.html",
+    "repo": "./Vini´s%20projects/forca",
+    "icon": "🪢"
+  },
+  {
+    "name": "Calculadora Simples",
+    "desc": "Calculadora básica com operações aritméticas.",
+    "tech": ["HTML", "CSS", "JS"],
+    "category": "calculadoras",
+    "demo": "./Vini´s%20projects/calculadora%20simples/calculadora.html",
+    "repo": "./Vini´s%20projects/calculadora%20simples",
+    "icon": "🧮"
+  },
+  {
+    "name": "Conversor de Temperatura (prompt)",
+    "desc": "Conversor Celsius ↔ Fahrenheit (modo simples).",
+    "tech": ["HTML", "JS"],
+    "category": "utilitarios",
+    "demo": "./Vini´s%20projects/conversor/conversor.html",
+    "repo": "./Vini´s%20projects/conversor",
+    "icon": "🌡️"
+  },
+  {
+    "name": "Conversor de Temperatura (UI)",
+    "desc": "Conversor Celsius ↔ Fahrenheit com select e input.",
+    "tech": ["HTML", "JS"],
+    "category": "utilitarios",
+    "demo": "./Vini´s%20projects/conversor/conversor_2.html",
+    "repo": "./Vini´s%20projects/conversor",
+    "icon": "🌡️"
+  },
+  {
+    "name": "Números Romanos",
+    "desc": "Conversor de números para romanos.",
+    "tech": ["HTML", "JS"],
+    "category": "utilitarios",
+    "demo": "./Vini´s%20projects/numeros%20romanos/index-romano.html",
+    "repo": "./Vini´s%20projects/numeros%20romanos",
+    "icon": "🏛️"
+  },
+  {
+    "name": "Palíndromos",
+    "desc": "Verificador de textos palíndromos.",
+    "tech": ["HTML", "JS"],
+    "category": "utilitarios",
+    "demo": "./Vini´s%20projects/palindromo/palindromo.html",
+    "repo": "./Vini´s%20projects/palindromo",
+    "icon": "🔁"
+  },
+  {
+    "name": "Gerador de Senhas",
+    "desc": "Geração de senhas aleatórias.",
+    "tech": ["HTML", "JS"],
+    "category": "utilitarios",
+    "demo": "./Vini´s%20projects/Senha/senha.html",
+    "repo": "./Vini´s%20projects/Senha",
+    "icon": "🔐"
+  },
+  {
+    "name": "Quiz Avançado",
+    "desc": "Quiz interativo com múltipla escolha e resposta livre.",
+    "tech": ["HTML", "CSS", "JS"],
+    "category": "jogos",
+    "demo": "./Vini´s%20projects/site%20quiz/index1.html",
+    "repo": "./Vini´s%20projects/site%20quiz",
+    "icon": "❓"
+  },
+  {
+    "name": "Tabuada",
+    "desc": "Geração de tabuadas automaticamente.",
+    "tech": ["HTML", "JS"],
+    "category": "exercicios",
+    "demo": "./Vini´s%20projects/tabuada/tabuada.html",
+    "repo": "./Vini´s%20projects/tabuada",
+    "icon": "✖️"
+  },
+  {
+    "name": "Geolocalização",
+    "desc": "Demonstração de API de geolocalização do navegador.",
+    "tech": ["HTML", "JS"],
+    "category": "utilitarios",
+    "demo": "./Vini´s%20projects/testes/localizacao.html",
+    "repo": "./Vini´s%20projects/testes",
+    "icon": "📍"
+  },
+  {
+    "name": "Exercício: Calculadora Chata",
+    "desc": "Operações básicas via prompt/script.",
+    "tech": ["HTML", "JS"],
+    "category": "exercicios",
+    "demo": "./Aula%20facul/exercicios%20em%20JS/exercicio.html",
+    "repo": "./Aula%20facul/exercicios%20em%20JS",
+    "icon": "📘"
+  },
+  {
+    "name": "Exercício: Média",
+    "desc": "Cálculo de média de notas.",
+    "tech": ["HTML", "JS"],
+    "category": "exercicios",
+    "demo": "./Aula%20facul/exercicios%20em%20JS/media.html",
+    "repo": "./Aula%20facul/exercicios%20em%20JS",
+    "icon": "📘"
+  },
+  {
+    "name": "Exercício: Operadores",
+    "desc": "Prática com operadores e entrada de dados.",
+    "tech": ["HTML", "JS"],
+    "category": "exercicios",
+    "demo": "./Aula%20facul/exercicios%20em%20JS/Operador.html",
+    "repo": "./Aula%20facul/exercicios%20em%20JS",
+    "icon": "📘"
+  },
+  {
+    "name": "Atividade Nota",
+    "desc": "Atividade acadêmica com avaliação.",
+    "tech": ["HTML", "JS"],
+    "category": "exercicios",
+    "demo": "./Aula%20facul/atividade_nota/atividade_nota.html",
+    "repo": "./Aula%20facul/atividade_nota",
+    "icon": "📝"
+  },
+  {
+    "name": "Resultado Teste",
+    "desc": "Página de resultado de atividade.",
+    "tech": ["HTML", "JS"],
+    "category": "exercicios",
+    "demo": "./Aula%20facul/atividade_nota/resultado_teste.html",
+    "repo": "./Aula%20facul/atividade_nota",
+    "icon": "📝"
+  },
+  {
+    "name": "Formulário",
+    "desc": "Formulário simples com JS e CSS.",
+    "tech": ["HTML", "CSS", "JS"],
+    "category": "exercicios",
+    "demo": "./Aula%20facul/Formulario/index.html",
+    "repo": "./Aula%20facul/Formulario",
+    "icon": "🗒️"
+  }
+]

@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "name": "MSYS2 GCC",
+            "compilerPath": "C:/msys64/mingw64/bin/gcc.exe",
+            "intelliSenseMode": "windows-gcc-x64"
+        }
+    ],
+    "version": 4
+}
