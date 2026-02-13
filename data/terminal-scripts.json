@@ -48,5 +48,110 @@
     "name": "Laço For (for_teste.js)",
     "path": "./Vini´s%20projects/testes/for_teste.js",
     "desc": "Demonstra contagem e impressão."
+  },
+  {
+    "name": "Semáforo (aula2.js)",
+    "path": "./Aula%20facul/exercicios%20em%20JS/aula2.js",
+    "desc": "Tempo e setTimeout simulando semáforo (console)."
+  },
+  {
+    "name": "Operadores (aula23.08.js)",
+    "path": "./Aula%20facul/exercicios%20em%20JS/aula23.08.js",
+    "desc": "Operações básicas com console.log."
+  },
+  {
+    "name": "Validador CPF (CPF.js)",
+    "path": "./Aula%20facul/exercicios%20em%20JS/CPF.js",
+    "desc": "Validação de CPF via console."
+  },
+  {
+    "name": "Validador CPF 2 (cpf2.js)",
+    "path": "./Aula%20facul/exercicios%20em%20JS/cpf2.js",
+    "desc": "Outra implementação de validação de CPF."
+  },
+  {
+    "name": "Repetição (Repetição.js)",
+    "path": "./Aula%20facul/exercicios%20em%20JS/Repeti%C3%A7%C3%A3o.js",
+    "desc": "Soma pares/ímpares com laço."
+  },
+  {
+    "name": "Repetição 1 (Repeticao1.js)",
+    "path": "./Aula%20facul/exercicios%20em%20JS/Repeticao1.js",
+    "desc": "Operações elemento a elemento entre vetores."
+  },
+  {
+    "name": "Script1 (prompt/alert)",
+    "path": "./Aula%20facul/exercicios%20em%20JS/Script1.js",
+    "desc": "Calculadora via prompt/alert (executa no thread principal)."
+  },
+  {
+    "name": "Exercicio (prompt/alert)",
+    "path": "./Aula%20facul/exercicios%20em%20JS/Exercicio.js",
+    "desc": "Loop de operações via prompt/alert (executa no thread principal)."
+  },
+  {
+    "name": "Média (prompt/alert)",
+    "path": "./Aula%20facul/exercicios%20em%20JS/media.js",
+    "desc": "Cálculo de média escolar via prompt/alert."
+  },
+  {
+    "name": "C: IMC (codigos.c)",
+    "path": "./Vini´s%20projects/codigos.c",
+    "desc": "Programa em C (IMC). Exibe instruções de compilação."
+  },
+  {
+    "name": "C: Calculadora (prova/calculadora.c)",
+    "path": "./Aula%20facul/exercicos%20em%20C/prova/calculadora.c",
+    "desc": "Programa em C de prova. Instruções de compilação."
+  },
+  {
+    "name": "C: IMC (prova/imc.c)",
+    "path": "./Aula%20facul/exercicos%20em%20C/prova/imc.c",
+    "desc": "Programa em C de IMC. Instruções de compilação."
+  },
+  {
+    "name": "C: Triângulo (prova/triangulo.c)",
+    "path": "./Aula%20facul/exercicos%20em%20C/prova/triangulo.c",
+    "desc": "Programa em C sobre triângulos. Instruções de compilação."
+  },
+  {
+    "name": "C: Árvore (arvore.c)",
+    "path": "./Aula%20facul/exercicos%20em%20C/arvore.c",
+    "desc": "Estruturas e laços em C. Instruções de compilação."
+  },
+  {
+    "name": "C: Busca (busca.c)",
+    "path": "./Aula%20facul/exercicos%20em%20C/busca.c",
+    "desc": "Busca em C. Instruções de compilação."
+  },
+  {
+    "name": "C: Conta (conta.c)",
+    "path": "./Aula%20facul/exercicos%20em%20C/conta.c",
+    "desc": "Operações básicas em C. Instruções de compilação."
+  },
+  {
+    "name": "C: Escolaridade (escolaridade.c)",
+    "path": "./Aula%20facul/exercicos%20em%20C/escolaridade.c",
+    "desc": "Lógica condicional em C. Instruções de compilação."
+  },
+  {
+    "name": "C: Fatorial (fatorial.c)",
+    "path": "./Aula%20facul/exercicos%20em%20C/fatorial.c",
+    "desc": "Cálculo de fatorial em C. Instruções de compilação."
+  },
+  {
+    "name": "C: Mensagem (mensagem.c)",
+    "path": "./Aula%20facul/exercicos%20em%20C/mensagem.c",
+    "desc": "Entrada/saída em C. Instruções de compilação."
+  },
+  {
+    "name": "C: Operador (operador.c)",
+    "path": "./Aula%20facul/exercicos%20em%20C/operador.c",
+    "desc": "Operadores em C. Instruções de compilação."
+  },
+  {
+    "name": "C: Ordem (ordem.c)",
+    "path": "./Aula%20facul/exercicos%20em%20C/ordem.c",
+    "desc": "Ordenação simples em C. Instruções de compilação."
   }
 ]

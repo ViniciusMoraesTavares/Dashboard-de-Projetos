@@ -133,19 +133,23 @@
   <main>
     <section class="grid" id="cards" aria-live="polite"></section>
     <section id="terminal-section" style="margin-top:24px">
-      <h2 style="margin:0 0 8px">Terminal do Navegador</h2>
+      <h2 style="margin:0 0 8px">Teste os codigos no Terminal</h2>
       <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center">
         <select id="script-select" aria-label="Escolher script" style="flex:1; min-width:260px; padding:8px; border-radius:8px; border:1px solid #334155; background:#0b1220; color:var(--text)"></select>
         <button id="run-btn" class="btn primary" type="button">Executar</button>
         <button id="clear-btn" class="btn" type="button">Limpar</button>
       </div>
       <details style="margin-top:8px">
-        <summary style="cursor:pointer">Editar código (temporário, não salva no arquivo)</summary>
+        <summary style="cursor:pointer">Editar código</summary>
         <div style="margin-top:8px; display:flex; gap:8px; flex-direction:column">
           <textarea id="editor" aria-label="Editor de código temporário" style="width:100%; min-height:180px; padding:10px; border-radius:8px; border:1px solid #334155; background:#0b1220; color:var(--text); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;"></textarea>
           <div style="display:flex; gap:8px; flex-wrap:wrap">
             <button id="reload-btn" class="btn" type="button">Recarregar do arquivo</button>
             <span style="color:#94a3b8; align-self:center">As edições aqui NÃO são salvas no disco; valem só para a próxima execução.</span>
+          </div>
+          <div>
+            <div style="margin:6px 0; color:#94a3b8">Prévia colorida:</div>
+            <pre id="editor-preview" style="background:#0b1220; border:1px solid #334155; border-radius:8px; padding:8px; white-space:pre-wrap; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;"></pre>
           </div>
         </div>
       </details>
@@ -198,9 +202,18 @@
         demo.rel = 'noopener noreferrer';
         demo.textContent = 'Demo';
         const repo = document.createElement('a');
-        repo.href = p.repo;
+        const isHosted = location.protocol === 'http:' || location.protocol === 'https:';
+        function toGitHubUrl(relPath) {
+          const base = 'https://github.com/ViniciusMoraesTavares/Dashboard-de-Projetos/tree/main/';
+          const clean = (relPath || '').replace(/^\.\//,'');
+          const parts = decodeURI(clean).split('/').map(s => encodeURIComponent(s));
+          return base + parts.join('/');
+        }
+        repo.href = isHosted ? toGitHubUrl(p.repo) : p.repo;
         repo.className = 'btn';
-        repo.textContent = 'Abrir pasta';
+        repo.target = '_blank';
+        repo.rel = 'noopener noreferrer';
+        repo.textContent = isHosted ? 'Código no GitHub' : 'Abrir pasta';
         actions.append(demo, repo);
         card.append(h, d, tags, actions);
         cardsEl.appendChild(card);
@@ -323,8 +336,10 @@
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const code = await res.text();
         editorEl.value = code;
+        updateEditorPreview();
       } catch (e) {
         editorEl.value = `// Erro ao carregar o arquivo (${e.message}).`;
+        updateEditorPreview();
       }
     }
 
@@ -356,6 +371,41 @@
       if (selectEl.value) await loadScriptContent(selectEl.value);
     });
 
+    function updateEditorPreview() {
+      const pv = document.getElementById('editor-preview');
+      pv.innerHTML = highlightJS(editorEl.value || '');
+    }
+    editorEl.addEventListener('input', updateEditorPreview);
+
+    function runInMainThread(code) {
+      const consoleShim = {
+        log: (...a) => println(a.map(String).join(' ')),
+        error: (...a) => println(a.map(String).join(' '), 'error'),
+        warn: (...a) => println(a.map(String).join(' ')),
+        info: (...a) => println(a.map(String).join(' '))
+      };
+      const promptShim = (msg) => {
+        const v = window.prompt(msg ?? '');
+        println(`[prompt] ${msg ?? ''} -> ${v}`);
+        return v;
+      };
+      const alertShim = (msg) => {
+        println(`[alert] ${msg}`);
+      };
+      try {
+        const fn = new Function('console','prompt','alert','print', code);
+        fn(consoleShim, promptShim, alertShim, (t)=>println(t));
+        println('> [execução finalizada]');
+      } catch (e) {
+        println(String(e), 'error');
+        println('> [execução finalizada]');
+      }
+    }
+
+    function isCFile(path) {
+      return /\.c$/i.test(path || '');
+    }
+
     runBtn.addEventListener('click', async () => {
       const path = selectEl.value;
       if (!path) return;
@@ -364,7 +414,24 @@
       try {
         const code = editorEl.value ?? '';
         renderCodeBlock(code);
-        worker.postMessage({ type: 'run', code });
+        if (isCFile(path)) {
+          println('Este é um programa em C. Não é possível executar no navegador.', 'error');
+          const fileName = path.split('/').pop() || 'program.c';
+          const base = fileName.replace(/\.c$/i,'');
+          println('Para compilar no Windows (MinGW):');
+          const src = decodeURI(path).replace(/^\.\//,'');
+          println(`gcc "${src}" -o "${base}.exe"`);
+          println('Para compilar no Linux/macOS:');
+          println(`gcc "${src}" -o "${base}" && "./${base}"`);
+          println('> [instruções exibidas]');
+          return;
+        }
+        const needsPrompt = /\bprompt\s*\(/.test(code) || /\balert\s*\(/.test(code);
+        if (needsPrompt) {
+          runInMainThread(code);
+        } else {
+          worker.postMessage({ type: 'run', code });
+        }
       } catch (e) {
         println(String(e), 'error');
       }
